@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace LINQ
 {
@@ -11,13 +12,16 @@ namespace LINQ
         public static Dictionary<int, int[]> GroupBy01()
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-
+            //var querry = from n in numbers
+            //             group n by n % 5
+            //             select
+            var querry = numbers.GroupBy(n => n % 5).ToDictionary(n => n.Key, n => n.ToArray());
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!
             // Use ToDictionary(x => {key}, x => {values})
             // Use group.Key as Dictionary key and group as Dictionary values
             // If compiler complains about IGrouping<int, int>, use ToArray() method
 
-            return new Dictionary<int, int[]>();
+            return querry;
         }
 
         /// <summary>
@@ -32,8 +36,9 @@ namespace LINQ
             // Use ToDictionary(x => {key}, x => {values})
             // Use group.Key as Dictionary key and group as Dictionary values
             // If compiler complains about IGrouping<char, string>, use ToArray() method
+            var querry = words.GroupBy(w => w[0]).ToDictionary(w => w.Key, w => w.ToArray());
 
-            return new Dictionary<char, string[]>();
+            return querry;
         }
     }
 }

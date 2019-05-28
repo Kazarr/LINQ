@@ -17,7 +17,7 @@ namespace LINQ
 
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!            
             
-            return null;
+            return products.First(a => a.Category == "Confections");
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace LINQ
 
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!            
             
-            return string.Empty;
+            return strings.First(s => s.StartsWith("o"));
         }
 
         /// <summary>
@@ -42,8 +42,8 @@ namespace LINQ
             int[] numbers = { };
 
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!            
-            
-            return 42;
+
+            return numbers.FirstOrDefault();
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace LINQ
 
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!            
             
-            return new Product();
+            return products.FirstOrDefault(p => p.ProductID ==789);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace LINQ
 
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!            
             
-            return 42;
+            return numbers.Where(n => n > 5).ElementAt(1);
         }
     }
 }

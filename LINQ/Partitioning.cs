@@ -1,6 +1,7 @@
 ﻿using LINQ.Data;
 using LINQ.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LINQ
 {
@@ -17,7 +18,7 @@ namespace LINQ
 
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!
 
-            return new int[] { };
+            return numbers.Take(3);
         }
 
         /// <summary>
@@ -29,8 +30,12 @@ namespace LINQ
             List<Customer> customers = DataLoader.GetCustomerList();
 
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!
-
-            return new CustomerOrderDto[] { };
+            var querry = from c in customers
+                         where c.Region == "WA"
+                         from o in c.Orders
+                         select new CustomerOrderDto() { OrderId = o.OrderID, CustomerId = c.CustomerID };
+            return querry;
+            //return customers.Where(c => c.Region == "WA").Select(c => new CustomerOrderDto() { CustomerId = c.CustomerID) }).Take(3);
         }
 
         /// <summary>
@@ -43,7 +48,7 @@ namespace LINQ
 
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!
 
-            return new int[] { };
+            return numbers.Skip(4);
         }
 
         /// <summary>
@@ -69,7 +74,7 @@ namespace LINQ
 
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!
 
-            return new int[] { };
+            return numbers.TakeWhile(n => n <6);
         }
 
         /// <summary>
@@ -82,7 +87,7 @@ namespace LINQ
 
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!
 
-            return new int[] { };
+            return numbers.TakeWhile((n,i) => n > i);
         }
 
         /// <summary>
@@ -95,7 +100,7 @@ namespace LINQ
 
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!
 
-            return new int[] { };
+            return numbers.SkipWhile(n => n % 3 == 0);
         }
 
         /// <summary>
@@ -107,7 +112,6 @@ namespace LINQ
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
             // !!! INSERT YOUR LINQ  MAGIC HERE !!!
-
             return new int[] { };
         }
     }
