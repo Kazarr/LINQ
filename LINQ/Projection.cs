@@ -44,6 +44,7 @@ namespace LINQ
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
             string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            numbers.Where(n => n % 2 == 0).Count();
 
             return numbers.Select(n => strings[n]);
 
